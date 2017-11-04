@@ -1,0 +1,50 @@
+So... how do you solve these types of data analysis problems?:
+
+* don't solve the problem >> solve a smaller problem
+      * too much data is hard to test for correctness
+      * too much data is hard to wrap your head around
+      * it takes too much time to process >>> meaning your script might take
+        a long time to process which slows down your ability to rapidly try
+        different techniques
+
+      For example, in testing for words that have a consonant-vowel pattern,
+      a really useful technique would be to create a short list of words with
+      variations of letter patterns to see if your code is successful in
+      picking out the words with the right patterns:
+
+      tests = [cv, cvcv, cvcvcvcvcvcv, vvc, vc, cvc, vcv]
+      for word in tests:
+          # do your checks
+
+      If this works, then you go back and replace the variable called tests with
+      whatever variable contains your real words:
+
+      for word in file1:
+          # do your checks
+
+
+* In this case, I would suggest putting your solutions into smaller files >>
+  rather than trying to solve all the parts in a single monolithic script.
+
+  * the practical had many parts and in most cases, the problems were only
+    related by the fact that they used the same file.
+  * putting each of the parts into smaller files would have yielded several
+    benefits:
+    * variable names > toward the bottom of the file, variable names tended to
+      get more convoluted to avoid duplicating previously used variables
+    * retyping/revisiting the same code helps you learn it
+      * having to retype some of the fundamental code helps you to get more
+        used to that code >>> especially code that you will use often:
+        fin = open('')
+        lines = fin.readlines()
+        for line in lines:
+    * improves the speed in running the code/testing your changes
+      * if you have a slow algorithm at the beginning of your code, then any
+        tests you try to run later in the code will have to wait til you
+        finish running the earlier code and as your script gets longer and
+        longer, this problem just compounds.
+    * limiting clutter >>> every script ends up including some tests/trials
+      and general clutter. We often comment it out when we try new techniques.
+      These comments start to accumulate which visually makes it harder to
+      find and understand the real code. Plus it makes scrolling to the right
+      part of the code cumbersome, etc, etc.
