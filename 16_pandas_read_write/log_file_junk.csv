@@ -1,0 +1,7 @@
+# filename: log_file_junk.csv
+# data source: project jarvis
+name,email,fmip,toip,datetime,lat,long,payload
+barbara gordon,bgordon@jleague.org,253.36.207.192,198.240.252.129,2016-02-07T21:44:28,48.14013,9.07396,34285
+kyle rayner,krayner@jleague.org,208.66.182.10,102.230.226.99,2016-02-06T21:44:56,45.28336,10.38742,40287
+dinah lance,dlance@jleague.org,246.167.32.76,7.36.164.133,2016-02-06T21:45:51,45.83448,8.70891,688291
+arthur curry,acurry@jleague.org,253.36.207.215,7.36.164.0,2016-02-06T21:47:02,49.44709,8.05527,126609

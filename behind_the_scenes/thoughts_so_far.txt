@@ -1,0 +1,53 @@
+cmd/terminal situational awareness
+* what folder is ipython running in?
+* what folder is my script stored in?
+* what folder is my data in?
+* pwd
+* cd (by itself takes you to your home dir)
+* cd .. takes you up a folder
+* cd path/path/path/path/ takes you to a sub folder
+* cd ../../.. takes you up three levels
+
+text editor
+* textedit is not your friend
+* try atom
+* try sublime
+* try bare bones/text wrangler
+
+window management
+* arrange your windows so you can see results and code:
+    * at the same time
+    * without moving your mouse, clicking on things, etc
+
+str() vs 'astringofchars'
+* if you need to author a string of characters, use quotes
+* if you have a number and need to convert it, use str()
+
+commenting your code
+* before you write your first line of code...
+  * add comments to tell yourself what you want to accomplish
+  * write your comments in English (avoid Pythonese)
+  * make them as detailed as you need
+
+using the correct variable
+* I regularly see students refer to the wrong variable
+    * my_results = open('somefile.txt', 'w')
+    * result = input('what is your name')
+    * result.write('something')
+
+run your script alot
+* I see folks write scripts that are eight to ten lines long
+    * and there are errors on line 3
+
+print() and type() everything
+* print() every variable
+* type() every variable
+* print(type(variable), variable) works well
+
+concatenating strings
+* early in your programming career, you will do a lot of this
+* get used to it...
+    * variable + 'string literal' + variable + '\n'
+    * 'string literal' + variable
+    * variable + variable
+    * etc

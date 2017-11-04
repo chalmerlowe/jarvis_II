@@ -1,0 +1,11 @@
+gpa,gpa_change,gender,athlete,day,period,duration
+75,0.9393950181891545,Female,no,Tue,evening,2
+55,0.10671470879630607,Male,yes,Fri,morning,1
+73,1.3098136311154724,Male,yes,Sat,morning,3
+82,1.702488489641135,Male,yes,Fri,afternoon,3
+56,2.5763429499175006,Male,yes,Tue,morning,2
+76,3.610407842555658,Male,yes,Thu,afternoon,3
+90,3.919340181751301,Male,yes,Mon,afternoon,2
+62,0.7287152907174343,Female,yes,Tue,evening,1
+78,0.832814803932381,Male,no,Mon,morning,2
+57,0.6539996309511008,Female,yes,Mon,evening,3

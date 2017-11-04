@@ -1,0 +1,43 @@
+The first column is an IP address. IP-Address (1)
+The second column is an IP address. IP-Address (2)
+The third column is the protocol.  In this case the protocol is set to 6 (TCP)
+The fourth column is the port associated with IP-Address 1.  In this case Ephemeral Ports.
+The fifth column is the port associated with IP-Address 2.  In this case HTTPS (443).
+The sixth column is the number of bytes received by IP-Address 1.  
+The seventh column is the number of bytes received by IP-Address 2.  
+The eighth column is the number of packets received by IP-Address 1. 
+The ninth column is the number of packets received by IP-Address 2.  
+The tenth column is the time the first packet was received.
+The eleventh column is the time the last packet was received.
+The twelfth column shows which IP Address sent the first packet (initiated the conversation).
+The thirteenth column shows which IP Address sent the last packet (finished the conversation).
+
+Sample Beaconing Traffic:
+
+1.2.3.4 11.22.33.44 6 53211 443 1910 2452 14 16 2016-08-15-13:30:28.8410 2016-08-15-13:30:29.6240 1 1
+1.2.3.4 11.22.33.44 6 53214 443 1698 2452 14 16 2016-08-15-13:35:18.6120 2016-08-15-13:35:19.4037 1 1
+1.2.3.4 11.22.33.44 6 53229 443 1698 2452 14 16 2016-08-15-13:39:57.4420 2016-08-15-13:39:58.2344 1 1
+1.2.3.4 11.22.33.44 6 53232 443 1698 2452 14 16 2016-08-15-13:44:26.4776 2016-08-15-13:44:27.2729 1 1
+1.2.3.4 11.22.33.44 6 53235 443 1698 2452 14 16 2016-08-15-13:49:14.8779 2016-08-15-13:49:14.8779 1 1
+1.2.3.4 11.22.33.44 6 53239 443 1698 2452 14 16 2016-08-15-13:53:45.0699 2016-08-15-13:53.45.8680 1 1
+1.2.3.4 11.22.33.44 6 53256 443 1698 2452 14 16 2016-08-15-13:58:43.5585 2016-08-15-13:58:44.3501 1 1
+
+
+Typical Traffic: 
+
+131.36.15.162 192.46.50.23 50 0 0 15417168 187127212 143056 249306 2017-06-29-18:40:00.5414 2017-06-29-18:50:00.5103 2 2
+23.46.14.148 192.46.2.4 6 443 49975 14987980 519472022 224077 409565 2017-06-29-18:40:00.5417 2017-06-29-18:50:00.5093 2 2
+23.46.14.174 192.46.2.4 6 443 61618 3332666 111585614 47626 78852 2017-06-29-18:40:00.5424 2017-06-29-18:49:59.7057 1 2
+192.46.2.9 150.137.2.9 47 0 0 283384906 535212898 411882 703762 2017-06-29-18:40:00.5425 2017-06-29-18:50:00.5126 1 1
+23.46.14.148 192.46.2.4 6 443 59538 10769704 374306510 161146 294428 2017-06-29-18:40:00.5446 2017-06-29-18:50:00.5128 1 2
+35.90.4.105 172.6.101.249 6 443 52849 0 116 0 2 2017-06-29-18:40:00.5450 2017-06-29-18:40:00.5450 1 1
+136.43.61.77 172.5.194.77 6 80 52308 0 116 0 2 2017-06-29-18:40:00.5467 2017-06-29-18:40:00.5467 1 1
+99.94.122.24 192.46.2.18 17 52459 4500 19112908 4294880 21354 20656 2017-06-29-18:40:00.5476 2017-06-29-18:50:00.4902 1 2
+68.13.54.226 172.6.181.113 6 57407 4003 0 108 0 2 2017-06-29-18:40:00.5479 2017-06-29-18:40:00.5479 1 1
+192.190.0.28 192.46.2.18 6 56971 443 2757890 294840 10534 5460 2017-06-29-18:40:00.5483 2017-06-29-18:50:00.5031 2 1
+
+
+Beaconing Signature Development:
+-Periodicity = regular, programmatic
+-Bytes/Packets = fairly similar size
+-IP Pairs = source IP to destination IP; source IP to several destination IPs
