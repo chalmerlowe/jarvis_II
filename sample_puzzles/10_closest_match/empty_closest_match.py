@@ -4,7 +4,7 @@
 
 # Given the word list (words.txt) associated with this
 #     puzzle** and the target word: 'octopus'
-#     0) identify the 10 words "closest" to the target word
+#     0) identify the 10 words "closest"* to the target word
 #     1) count the total number of characters in the 10
 #        words
 #
@@ -23,7 +23,11 @@
 # * hell
 # * hello
 
-# **NOTE: The word list was derived from
+# * NOTE: The definition of 'closest' in this case is based on 
+#         the parameters defined by the Python Standard Library
+#         that I used to solve the puzzle. It will almost assuredly
+#         differ if you use a 'roll-your-own' algorithm OR a 3rd party library. 
+# ** NOTE: The word list was derived from
 #         /usr/share/dict/words on a Mac
 
 # Put your code here:
