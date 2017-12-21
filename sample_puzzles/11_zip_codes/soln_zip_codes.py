@@ -47,12 +47,11 @@
 # Put your code here:
 
 import re
-patt = re.compile(r'(\b\w{2} ((\d{5})-(\d{4})\b|(\d{5})))[\n ]')
+patt = re.compile(r'(\b\w{2} ((\d{5})-(\d{4})\b|(\d{5})))\s')
 
 with open('output.txt') as fin:
     matches = []
     for line in fin:
-        line = line.rstrip()
         mo = patt.search(line)
         if mo:
             matches.append(mo)
@@ -73,4 +72,4 @@ for match in matches:
 
 print('ANSWER: ', total)
 
-# ANSWER: 700540
+# ANSWER: 914778 
