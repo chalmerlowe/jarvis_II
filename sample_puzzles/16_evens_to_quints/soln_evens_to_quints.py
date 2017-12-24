@@ -1,4 +1,4 @@
-# TITLE: even to quint generator >> gen_evens_to_quints.py
+# TITLE: even to quint generator >> soln_evens_to_quints.py
 # AUTHOR: Chalmer Lowe
 # DESCRIPTION:
 
