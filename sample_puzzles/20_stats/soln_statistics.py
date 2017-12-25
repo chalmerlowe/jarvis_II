@@ -14,11 +14,11 @@
 # For example:
 #
 #     mean,1,2,3,4,5           >                      3
-#     median,1,3,5,7           >                      4.0
-#     variance,2,1,1,0,0,1,3   > 1.1428571428571428 > 1.0
-#     stdev,2,1,1,0,0,1,3      > 1.0690449676496976 > 1.0
+#     median,1,3,5,7           >                      4
+#     variance,2,1,1,0,0,1,3   > 1.1428571428571428 > 1
+#     stdev,2,1,1,0,0,1,3      > 1.0690449676496976 > 1
 #                              ---------------------------
-#                                        total:       9.0
+#                                        total:       9
 
 # ==============================================================
 # Your code goes here:
@@ -32,7 +32,7 @@ def stats_calc(term, values):
             'stdev': stdev,
             }
 
-    return round(calc[term](values), 0)
+    return round(calc[term](values))
 
 
 with open('stats.txt') as fin:
@@ -48,3 +48,5 @@ with open('stats.txt') as fin:
 
 total = sum(results)
 print(total)
+
+# 21550995688
