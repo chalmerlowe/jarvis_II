@@ -1,0 +1,50 @@
+# TITLE: statistics >> gen_statistics.py
+# AUTHOR: Chalmer Lowe
+# DESCRIPTION:
+
+
+# The file: statistics.txt, has multiple numbers, separated by commas on each
+#     line. NOTE: Not all lines will have the same number of values.
+# In addition, each line has one of several statistical terms as the first
+#     element: mean, median, mode, variance, standard deviation
+# For each line, identify the stats term, and perform that calculation on
+#     the numbers on the list. All results should be rounded to a whole number
+#     value (NOTE: do not simply truncate).
+#     Sum the total of all results.
+# For example:
+#
+#     mean,1,2,3,4,5           >                      3
+#     median,1,3,5,7           >                      4.0
+#     variance,2,1,1,0,0,1,3   > 1.1428571428571428 > 1.0
+#     stdev,2,1,1,0,0,1,3      > 1.0690449676496976 > 1.0
+#                              ---------------------------
+#                                        total:       9.0
+
+# ==============================================================
+# Your code goes here:
+
+from statistics import mean, median, mode, variance, stdev
+
+def stats_calc(term, values):
+    calc = {'mean': mean,
+            'median': median,
+            'variance': variance,
+            'stdev': stdev,
+            }
+
+    return round(calc[term](values), 0)
+
+
+with open('stats.txt') as fin:
+    results = []
+    for line in fin:
+        line = line.strip().split(',')
+        term, values = line[0], line[1:]
+        values = [int(val) for val in values]
+
+        result = stats_calc(term, values)
+        results.append(result)
+        # print(result)
+
+total = sum(results)
+print(total)
