@@ -23,20 +23,18 @@
 #
 # ----------------------------------
 
-with open('output.txt') as fin:
-    nums = [int(n.rstrip()) for n in fin.readlines()]
-    dedupes = set()
-    for num in nums:
-        if num % 2 == 0:
-            dedupes.add(num)
-        elif num % 3 == 0:
-            dedupes.add(num)
-        elif num % 5 == 0:
-            dedupes.add(num)
-        elif num % 7 == 0:
-            dedupes.add(num)
-        else:
-            pass
+def passes_criteria(num):
+    '''check for numbers that meet the four criteria'''
 
-print('Answer:', len(dedupes))
+    if num % 2 == 0 or num % 3 == 0 or num % 5 == 0 or num % 7 == 0:
+        return 1
+    return 0
+
+count = 0
+with open('output.txt') as fin:
+    for line in fin:
+        number = int(line)
+        count += passes_criteria(number)
+
+print('Answer: ', count)
 # 771428
