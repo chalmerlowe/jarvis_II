@@ -44,3 +44,5 @@ with open('words.txt') as fin:
     for index, word in enumerate(fin, 1):
         if 'python' == word.rstrip():
             print(index, word)
+
+# Answer: 3151

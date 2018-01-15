@@ -36,7 +36,11 @@ with open('../data/113809of.fic') as fin:
     words = [word.strip() for word in fin.readlines()][::10]
 
 words.append('python')
+blanks = [''] * 20
+words.extend(blanks)
 shuffle(words)
+print(len(words))
+
 
 with open('words.txt', 'w') as fout:
     for word in words:
