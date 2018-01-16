@@ -1,7 +1,7 @@
-# TITLE: quad_vowels >> soln_quad_vowels.py
+# TITLE: quad_vowels >> solution_quad_vowels.py
 # AUTHOR: Chalmer Lowe
 # DESCRIPTION:
-# Read all the values from the file words.txt.
+# Read all the values from the file: words.txt.
 # Each line contains a word.
 # Each word has one or more vowels
 # Deduplicate the words, so only a single copy remains
@@ -41,4 +41,18 @@ with open('words.txt') as fin:
             word_count += 1
 
 print('Answer:', word_count)
-# 
+
+
+# The following solution uses slightly more pythonic and/or potentially
+#     more elegant code.
+
+def vowel_counter(word):
+    vowels = 'aeiou'
+    return sum([1 for letter in word if letter in vowels])
+
+
+with open('words.txt') as fin:
+    words = set(word.rstrip() for word in fin.readlines())
+    word_count = sum([1 for word in words if vowel_counter(word) > 3])
+
+print('Answer2:', word_count)

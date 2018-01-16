@@ -1,7 +1,7 @@
 # TITLE: quad_vowels >> gen_quad_vowels.py
 # AUTHOR: Chalmer Lowe
 # DESCRIPTION:
-# Read all the values from the file words.txt.
+# Read all the values from the file: words.txt.
 # Each line contains a word.
 # Each word has one or more vowels
 # Deduplicate the words, so only a single copy remains
