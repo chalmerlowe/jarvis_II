@@ -14,6 +14,7 @@ print('total ratings:', ratenums)
 print('avg rating:', avg)
 
 # --------------------------------------------
+# an alternate approach that simplifies the counting process
 
 from collections import Counter
 ratings = open('movies.txt').read().split('\n')
