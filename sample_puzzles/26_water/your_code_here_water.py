@@ -3,7 +3,7 @@
 # DESCRIPTION:
 
 
-# You work for a water distribution company and have all a file (water.txt) with
+# You work for a water distribution company and have a file (water.txt) with
 #     data for each customer's water usage in gallons.
 # Your job is to find the five customers with the highest usage.
 
