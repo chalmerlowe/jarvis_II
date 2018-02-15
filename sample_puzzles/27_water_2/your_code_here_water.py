@@ -3,13 +3,13 @@
 # DESCRIPTION:
 
 
-# You work for a water distribution company and have all a file
+# You work for a water distribution company and have a file
 #     (water_dupe.txt) with
 #     data for each customer's water usage in gallons.
 # Your job is to find the customer with the highest usage and the customer 
 #     with the lowest usage.
 
-# The file: water.txt, has multiple lines. Each line contains two elements:
+# The file: water_dupe.txt, has multiple lines. Each line contains two elements:
 #     a customer ID and a number that are separated by semicolons.
 #
 #     * Find the customers with the highest and lowest usages

@@ -1,14 +1,14 @@
-# TITLE: water >> solution_water.py
+# TITLE: water >> solution_water_2.py
 # AUTHOR: Aidan Lowe and Chalmer Lowe
 # DESCRIPTION:
 
-# You work for a water distribution company and have all a file
+# You work for a water distribution company and have a file
 #     (water_dupe.txt) with
 #     data for each customer's water usage in gallons.
 # Your job is to find the customer with the highest usage and the customer
 #     with the lowest usage.
 
-# The file: water.txt, has multiple lines. Each line contains two elements:
+# The file: water_dupe.txt, has multiple lines. Each line contains two elements:
 #     a customer ID and a number that are separated by semicolons.
 #
 #     * Find the customers with the highest and lowest usages
@@ -34,15 +34,15 @@
 file = open('water_dupe.txt').read().split('\n')[:-1]
 
 from collections import defaultdict
+from operator import itemgetter
 
-mDict = defaultdict(int)
+water_use = defaultdict(int)
 for line in file:
     ID, amount = line.split(';')
     amount = int(amount)
-    mDict[ID] += amount
+    water_use[ID] += amount
 
-items = sorted(mDict, key=mDict.__getitem__)
+items = sorted(water_use.items(), key=itemgetter(1))
 
-# items = [x + ';' + str(mDict[x]) for x in items[-5:]]
-print('highest:', items[-1], mDict[items[-1]])
-print('lowest:', items[0], mDict[items[0]])
+print('highest:', items[-1], water_use[items[-1]])
+print('lowest:', items[0], water_use[items[0]])
