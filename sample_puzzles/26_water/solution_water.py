@@ -9,9 +9,9 @@
 
 # The file: water.txt, has multiple lines. Each line contains two elements:
 #     a customer ID and a number that are separated by semicolons.
-#     
+#
 #     * Find the customers with the highest usage
-#     * NOTE: Some customer IDs repeat... Use only the FIRST instance of a 
+#     * NOTE: Some customer IDs repeat... Use only the FIRST instance of a
 #       customer record to determine that customer's usage.
 
 # For example, given the following lines:
@@ -23,9 +23,9 @@
 #    2u3hoas;108
 #    i12j018;712
 
-# the top 2 customers by usage would be: 
+# the top 2 customers by usage would be:
 #    ja02i3k >>> with a usage of 743
-#    i12j018 >>> with a usage of 712    
+#    i12j018 >>> with a usage of 712
 
 
 # ==============================================================
@@ -54,7 +54,7 @@ for line in file:
         continue
     else:
         IDs.append(ID)
-    
+
     if amount > getnum(top1):
         top5, top4, top3, top2, top1 = top4, top3, top2, top1, line
     elif amount > getnum(top2):
@@ -79,7 +79,7 @@ memo = []
 with open('water.txt') as fin:
     for line in fin:
         custid, usage = line.strip().split(';')
-        
+
         # skip processing if we have already seen a customer ID
         if custid in memo:
             continue
@@ -89,10 +89,43 @@ with open('water.txt') as fin:
         customers.append((custid, int(usage)))
         memo.append(custid)
 
-# sort the tuples based on the value in the second position.                
-customers = sorted(customers, key=itemgetter(1), reverse=True)   
+# sort the tuples based on the value in the second position.
+customers = sorted(customers, key=itemgetter(1), reverse=True)
 
 # save only the customer names for the first 5 customers
 customers = [element[0] for element in customers[:5]]
 
 print("Top 5:", customers)
+
+
+# SOLUTION TWO ========================================
+
+# Runtime is O(n * logk), n is number of lines in water.txt, k is heapsize.
+
+import heapq
+
+# Set allows for O(1) look up and storage time for cust_ids.
+# Heap allows for O(1) look up of min item and O(logk) storage of large usage.
+considered = set()
+minheap = []
+heapsize = 5
+
+with open('water.txt') as fin:
+    for line in fin:
+        parts = line.split(sep=';')
+        cust_id, usage = parts[0], int(parts[1])
+
+        # Only process unseen customer IDs
+        if cust_id not in considered:
+            considered.add(cust_id)
+
+            # Heap invariant allows us to keep largest k items on O(logk) time.
+            # The 0th index item in the heap is the SMALLEST of the largest.
+            # Data is saved as a tuple with usage in 0th place for sorting.
+            if len(minheap) < heapsize:
+                heapq.heappush(minheap, (usage, cust_id))
+            elif usage > minheap[0][0]:
+                heapq.heapreplace(minheap, (usage, cust_id))
+
+minheap.sort(reverse=True)
+print("Top 5:", *minheap)
