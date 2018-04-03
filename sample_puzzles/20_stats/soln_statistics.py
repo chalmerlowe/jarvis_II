@@ -27,10 +27,10 @@ from statistics import mean, median, mode, variance, stdev
 
 def stats_calc(term, values):
     calc = {'mean': mean,
-            'median': median,
-            'variance': variance,
-            'stdev': stdev,
-            }
+	    'median': median,
+	    'variance': variance,
+	    'stdev': stdev,
+	    }
 
     return round(calc[term](values))
 
@@ -44,9 +44,38 @@ with open('stats.txt') as fin:
 
         result = stats_calc(term, values)
         results.append(result)
-        # print(result)
+	# print(result)
 
 total = sum(results)
 print(total)
 
 # 21550995688
+
+
+
+
+# ==============================================================
+# Solution One
+from statistics import mean, median, variance, stdev
+
+# key is the key term which determines what operation to perform
+# data is data contained within each line
+def stat_func(key, data):
+    functions = {
+        'mean': mean,
+	'median': median,
+	'variance': variance,
+	'stdev': stdev,
+    }
+
+    return round(functions[key](data))
+
+
+total = 0
+
+with open('stats.txt', 'r') as f:
+    for line in f:
+        data = line.rstrip('\n').split(',')
+        total += stat_func(data[0], map(int, data[1:]))
+
+print(total)
