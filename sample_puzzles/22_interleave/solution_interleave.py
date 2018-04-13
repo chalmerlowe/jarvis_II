@@ -64,7 +64,7 @@ with open('interleave.txt') as fin:
     line_a = map(int, fin.readline().split(';'))
     line_b = map(int, fin.readline().split(';'))
 
-interweaved = tuple(num for num in chain(*zip(line_a, line_b)))
+interweaved = tuple(chain.from_iterable(zip(line_a, line_b)))
 deltas = (a - b for a, b in zip(interweaved, interweaved[1:]))
 even_deltas = (delta for delta in deltas if delta % 2 == 0)
 
