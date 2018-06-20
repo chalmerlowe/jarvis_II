@@ -27,3 +27,9 @@
 # ----------------------------------
 #
 # Your code goes here:
+path = 'alpha_num_list.txt'
+def listify(filename):
+        finput = open(filename, 'r')
+        return finput.readline().split('\n')[0].split(' ')
+
+print listify(path)
