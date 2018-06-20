@@ -27,9 +27,31 @@
 # ----------------------------------
 #
 # Your code goes here:
-path = 'alpha_num_list.txt'
-def listify(filename):
-        finput = open(filename, 'r')
-        return finput.readline().split('\n')[0].split(' ')
 
-print listify(path)
+path = 'alpha_num_list.txt'
+
+# listify will read the first line of a file and return a list
+# in which each "word" is an element. 
+
+def listify(filename):
+    finput = open(filename, 'r')
+    return finput.readline().split('\n')[0].split(' ')
+
+
+# deduplicateList takes a list as input and returns a new list
+# containing all the elements of the first, sans duplicates
+
+def deduplicateList(linput):
+    loutput = []
+    for x in linput:
+        if not (x in loutput):
+            loutput.append(x)
+    return loutput
+
+alpha_num_list = listify(path)
+deduplicated_list = deduplicateList(alpha_num_list)
+
+print deduplicated_list
+print alpha_num_list
+
+
