@@ -51,7 +51,6 @@ def deduplicateList(linput):
 alpha_num_list = listify(path)
 deduplicated_list = deduplicateList(alpha_num_list)
 
-print deduplicated_list
-print alpha_num_list
+print deduplicated_list[42]
 
 
