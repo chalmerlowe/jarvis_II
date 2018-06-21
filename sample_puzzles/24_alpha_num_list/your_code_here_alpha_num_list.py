@@ -27,3 +27,14 @@
 # ----------------------------------
 #
 # Your code goes here:
+
+
+def dedupe():
+    with open('alpha_num_list.txt') as fin:
+        seq = fin.readline().strip().split(' ')
+
+    unique_seq = []
+    for letter in seq:
+        if letter not in unique_seq:
+            unique_seq.append(letter)
+    return unique_seq[42]
