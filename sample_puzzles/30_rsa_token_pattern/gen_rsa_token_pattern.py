@@ -39,7 +39,11 @@ NUM_LINES = 10
 token_types = ['pal', 'mini', 'rising', 'falling', 'regular']
 
 def regular():
-    choice( range(10000, 1000000) )
+    return choice( range( 100000, 1000000 ) )
+
+def pal():
+    firstThreeDigits = choice( range( 100, 1000 ) )
+    return (firstThreeDigits * 1000) + ( int(str(firstThreeDigits)[::-1]) )
 
 """
 with open('rsa_token_values.txt', 'w') as fout:
