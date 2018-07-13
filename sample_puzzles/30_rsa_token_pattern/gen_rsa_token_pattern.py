@@ -36,6 +36,8 @@
 from random import randint, choice 
 NUM_LINES = 10
 
+token_types = ['pal', 'mini', 'rising', 'falling', 'regular']
+
 """
 with open('rsa_token_values.txt', 'w') as fout:
     # cycle over the number of lines
