@@ -43,7 +43,17 @@ def regular():
 
 def pal():
     firstThreeDigits = choice( range( 100, 1000 ) )
-    return (firstThreeDigits * 1000) + ( int(str(firstThreeDigits)[::-1]) )
+    return ( firstThreeDigits * 1000 ) + ( int(str(firstThreeDigits)[::-1]) )
+
+def mini():
+    firstTwoDigits1 = choice( range( 10, 100) )
+    firstTwoDigits2 = choice( range( 10, 100) )
+    left = ( firstTwoDigits1 * 10 ) + ( int(str(firstTwoDigits1)[0]) )
+    right = ( firstTwoDigits2 * 10 ) + ( int(str(firstTwoDigits2)[0]) )
+    return ( left * 1000 ) + right
+
+for i in range(1000):
+    print(mini())
 
 """
 with open('rsa_token_values.txt', 'w') as fout:
