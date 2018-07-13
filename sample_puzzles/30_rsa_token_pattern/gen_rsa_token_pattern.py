@@ -52,8 +52,16 @@ def mini():
     right = ( firstTwoDigits2 * 10 ) + ( int(str(firstTwoDigits2)[0]) )
     return ( left * 1000 ) + right
 
-for i in range(1000):
-    print(mini())
+def rising():
+    digit = choice( range( 1, 9 ) )
+    token = 0
+
+    for i in range( 6, 0, -1):
+        token += digit * (10 ** (i - 1))
+        digit = choice( range( digit, 10) )
+
+    return token 
+
 
 """
 with open('rsa_token_values.txt', 'w') as fout:
