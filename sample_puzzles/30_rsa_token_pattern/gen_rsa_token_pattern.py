@@ -34,8 +34,22 @@
 #     ignore the no category samples.
 
 from random import randint, choice 
+from math import floor, ceil
 NUM_LINES = 10
 
+def makeNDigitPalindrome(n):
+    if (n <= 0):
+        raise ValueError("argument `n` must be greater than 0\n    given: %i" % n)
+    elif (n == 1):
+        return choice( range( 1, 10 ) )
+    else:
+        substring = choice( range( 10 ** (int( n / 2 ) - 1), 10 ** int( n / 2 ) ) )
+
+        if ((n % 2) == 0):
+            return (substring * (10 ** int( n / 2 ))) + int( str( substring )[::-1] )
+        else:
+            centerDigit = choice( range( 1, 10 ) )
+            return (substring * (10 ** ceil( n / 2 ))) + (centerDigit * (10 ** int( n / 2 ))) + int( str( substring )[::-1] )
 
 def regular():
     return choice( range( 100000, 1000000 ) )
