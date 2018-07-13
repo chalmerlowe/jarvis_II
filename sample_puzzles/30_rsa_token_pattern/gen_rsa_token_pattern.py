@@ -38,6 +38,9 @@ NUM_LINES = 10
 
 token_types = ['pal', 'mini', 'rising', 'falling', 'regular']
 
+def regular():
+    choice( range(10000, 1000000) )
+
 """
 with open('rsa_token_values.txt', 'w') as fout:
     # cycle over the number of lines
