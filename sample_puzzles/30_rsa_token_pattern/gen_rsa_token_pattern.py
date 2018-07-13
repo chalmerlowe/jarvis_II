@@ -55,15 +55,10 @@ def regular():
     return choice( range( 100000, 1000000 ) )
 
 def pal():
-    firstThreeDigits = choice( range( 100, 1000 ) )
-    return ( firstThreeDigits * 1000 ) + ( int(str(firstThreeDigits)[::-1]) )
+    return makeNDigitPalindrome(6)
 
 def mini():
-    firstTwoDigits1 = choice( range( 10, 100) )
-    firstTwoDigits2 = choice( range( 10, 100) )
-    left = ( firstTwoDigits1 * 10 ) + ( int(str(firstTwoDigits1)[0]) )
-    right = ( firstTwoDigits2 * 10 ) + ( int(str(firstTwoDigits2)[0]) )
-    return ( left * 1000 ) + right
+    return (makeNDigitPalindrome(3) * 1000) + makeNDigitPalindrome(3)
 
 def rising():
     digit = choice( range( 1, 9 ) )
