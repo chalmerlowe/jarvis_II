@@ -72,22 +72,24 @@ def rising():
     digit = choice( range( 1, 9 ) )
     token = 0
 
-    for i in range( 6, 0, -1):
-        token += digit * (10 ** (i - 1))
+    for i in range( 6 )[::-1]:
+        token += digit * (10 ** i)
         digit = choice( range( digit, 10) )
-
-    return token 
-
-def falling():
-    digit = choice( range( 1, 9 ) )
-    token = 0
-
-    for i in range( 1, 7 ):
-        token += digit * (10 ** (i - 1))
-        digit = choice( range( digit, 10 ) )
 
     return token
 
+def falling():
+    digit = choice( range( 1, 10 ) )
+    token = 0
+
+    for i in range( 6 )[::-1]:
+        token += digit * (10 ** i)
+        digit = choice( range( 0, digit + 1 ) )
+
+    return token
+
+for i in range(1000):
+    print( pal() )
 token_types = [pal, mini, rising, falling, regular]
 """
 with open('rsa_token_values.txt', 'w') as fout:
