@@ -36,24 +36,18 @@
 from random import randint, choice 
 NUM_LINES = 10
 
-
-def palindrome(n=6):
-    '''Return a random sequence of n numbers that are palindromic.'''
-    return token
-
-def rising_falling(rising=True):
-    '''Return a sequence of numbers that are rising (each subsequent number is
-    equal to or larger than the previous number) OR falling (each subsequent
-    number is equal to or smaller than the previous number)'''
-    return token
-
+"""
 with open('rsa_token_values.txt', 'w') as fout:
     # cycle over the number of lines
     
     # choose the type of token (pal, mini, rising, falling)
+    token = makeToken( choice( token_types ) )
     
     # given the type of token, create digits for token
     
     # format token (add space, new line, etc)
+    concat( token[:3], " ", token[3:], "\n" )
+
 
     # write token to the output file
+"""
