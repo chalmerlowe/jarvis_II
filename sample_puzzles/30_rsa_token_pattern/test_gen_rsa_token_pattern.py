@@ -75,5 +75,29 @@ class TestTokenConstructors(unittest.TestCase):
             for i in range( 1, 6 ):
                 self.assertLessEqual( fallingToken[i], fallingToken[ i - 1 ] )
 
+class TestPalindromeConstructor(unittest.TestCase):
+    def test_isPalindrome(self):
+        # palindromic numbers should be integers who're equal to their reverse
+        for i in range(1, 40):
+            for j in range(1000):
+                palindrome = makeNDigitPalindrome(i)
+                self.assertEqual(palindrome, int(str(palindrome)[::-1]))
+
+    def test_palindromeLength(self):
+        # makeNDigitPalindrome(n) should be n digits long
+        for i in range(1, 40):
+            palindrome = makeNDigitPalindrome(i)
+            self.assertEqual(len(str(palindrome)), i)
+
+    def test_palindromeTypeChecking(self):
+        wrong_type_arguments = [0.1, 1/3, 1 + 2j, "seven"]
+        for arg in wrong_type_arguments:
+            self.assertRaises(TypeError, makeNDigitPalindrome, arg)
+
+    def test_palindromeValueChecking(self):
+        bad_value_arguments = [-22, -1, 0]
+        for arg in bad_value_arguments:
+            self.assertRaises(ValueError, makeNDigitPalindrome, arg)
+
 if __name__ == '__main__':
     unittest.main()
