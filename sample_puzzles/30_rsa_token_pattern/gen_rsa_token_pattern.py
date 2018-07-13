@@ -48,11 +48,11 @@ def makeNDigitPalindrome(n):
     else:
         substring = choice( range( 10 ** (int( n / 2 ) - 1), 10 ** int( n / 2 ) ) )
         if ((n % 2) == 0):
-            '''If n is even: concatenate n with its reverse'''
+            '''If n is even: concatenate `substring` with its reverse'''
             return ( (substring * (10 ** int( n / 2 )))
                      + int( str( substring )[::-1]) )
         else:
-            '''If n is odd: concatenate n with a random 1-digit integer and n's reverse'''
+            '''If n is odd: concatenate `substring` with a random 1-digit integer and `substring`'s reverse'''
             centerDigit = choice( range( 10 ) )
             return ( (substring * (10 ** ceil( n / 2 )))
                      + (centerDigit * (10 ** int( n / 2 )))
@@ -66,7 +66,8 @@ def pal():
 
 
 def mini():
-    return (makeNDigitPalindrome( int( 3 ) ) * 1000) + makeNDigitPalindrome( int( 3 ) )
+    return ( (makeNDigitPalindrome( int( 3 ) ) * 1000)
+             + makeNDigitPalindrome( int( 3 ) ) )
 
 def rising():
     digit = choice( range( 1, 9 ) )
@@ -88,8 +89,6 @@ def falling():
 
     return token
 
-for i in range(1000):
-    print( pal() )
 token_types = [pal, mini, rising, falling, regular]
 """
 with open('rsa_token_values.txt', 'w') as fout:
