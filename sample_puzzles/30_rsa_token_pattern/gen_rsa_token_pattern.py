@@ -38,27 +38,35 @@ from math import floor, ceil
 NUM_LINES = 10
 
 def makeNDigitPalindrome(n):
+    if type(n) is not int:
+        raise TypeError("argument `n` must be type: int\n    given: %s" % str(n))
     if (n <= 0):
         raise ValueError("argument `n` must be greater than 0\n    given: %i" % n)
     elif (n == 1):
         return choice( range( 1, 10 ) )
+
     else:
         substring = choice( range( 10 ** (int( n / 2 ) - 1), 10 ** int( n / 2 ) ) )
-
         if ((n % 2) == 0):
-            return (substring * (10 ** int( n / 2 ))) + int( str( substring )[::-1] )
+            '''If n is even: concatenate n with its reverse'''
+            return ( (substring * (10 ** int( n / 2 )))
+                     + int( str( substring )[::-1]) )
         else:
-            centerDigit = choice( range( 1, 10 ) )
-            return (substring * (10 ** ceil( n / 2 ))) + (centerDigit * (10 ** int( n / 2 ))) + int( str( substring )[::-1] )
+            '''If n is odd: concatenate n with a random 1-digit integer and n's reverse'''
+            centerDigit = choice( range( 10 ) )
+            return ( (substring * (10 ** ceil( n / 2 )))
+                     + (centerDigit * (10 ** int( n / 2 )))
+                     + int( str( substring )[::-1]))
 
 def regular():
     return choice( range( 100000, 1000000 ) )
 
 def pal():
-    return makeNDigitPalindrome(6)
+    return makeNDigitPalindrome( int( 6 ) )
+
 
 def mini():
-    return (makeNDigitPalindrome(3) * 1000) + makeNDigitPalindrome(3)
+    return (makeNDigitPalindrome( int( 3 ) ) * 1000) + makeNDigitPalindrome( int( 3 ) )
 
 def rising():
     digit = choice( range( 1, 9 ) )
