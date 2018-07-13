@@ -43,5 +43,37 @@ class TestTokenConstructors(unittest.TestCase):
             self.assertEqual(palindrome1, int(str(palindrome1)[::-1]))
             self.assertEqual(palindrome2, int(str(palindrome2)[::-1]))
 
+    def test_risingTokenLength(self):
+        # Rising tokens should be six-digit integers
+        # i.e between 100000 999999
+        for i in range(1000):
+            token = rising()
+            self.assertGreaterEqual(token, 100000)
+            self.assertLessEqual(token, 999999)
+
+    def test_isRisingToken(self):
+        # Each digit in a rising token must be greater than
+        # or equal to the digit to the left of it
+        for i in range(100000):
+            risingToken = str( rising() )
+            for i in range( 1, 6 ):
+                self.assertGreaterEqual( risingToken[i], risingToken[ i - 1 ] )
+
+    def test_fallingTokenLength(self):
+        # Falling tokens should be six-digit integers
+        # i.e between 100000 999999
+        for i in range(1000):
+            token = falling()
+            self.assertGreaterEqual(token, 100000)
+            self.assertLessEqual(token, 999999)
+
+    def test_isFallingToken(self):
+        # Each digit in a falling token must be less than
+        # or equal to the digit to the left of it
+        for i in range(100000):
+            fallingToken = str( falling() )
+            for i in range( 1, 6 ):
+                self.assertLessEqual( fallingToken[i], fallingToken[ i - 1 ] )
+
 if __name__ == '__main__':
     unittest.main()
