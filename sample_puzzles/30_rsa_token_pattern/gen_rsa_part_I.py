@@ -34,6 +34,79 @@
 #     ignore the no category samples.
 
 from random import randint, choice 
+<<<<<<< HEAD:sample_puzzles/30_rsa_token_pattern/gen_rsa_token_pattern.py
+from math import floor, ceil
+NUM_LINES = 10
+
+def makeNDigitPalindrome(n):
+    if type(n) is not int:
+        raise TypeError("argument `n` must be type: int\n    given: %s" % str(n))
+    if (n <= 0):
+        raise ValueError("argument `n` must be greater than 0\n    given: %i" % n)
+    elif (n == 1):
+        return choice( range( 1, 10 ) )
+
+    else:
+        substring = choice( range( 10 ** (int( n / 2 ) - 1), 10 ** int( n / 2 ) ) )
+        if ((n % 2) == 0):
+            '''If n is even: concatenate `substring` with its reverse'''
+            return ( (substring * (10 ** int( n / 2 )))
+                     + int( str( substring )[::-1]) )
+        else:
+            '''If n is odd: concatenate `substring` with a random 1-digit integer and `substring`'s reverse'''
+            centerDigit = choice( range( 10 ) )
+            return ( (substring * (10 ** ceil( n / 2 )))
+                     + (centerDigit * (10 ** int( n / 2 )))
+                     + int( str( substring )[::-1]))
+
+def regular():
+    return choice( range( 100000, 1000000 ) )
+
+def pal():
+    return makeNDigitPalindrome( int( 6 ) )
+
+
+def mini():
+    return ( (makeNDigitPalindrome( int( 3 ) ) * 1000)
+             + makeNDigitPalindrome( int( 3 ) ) )
+
+def rising():
+    digit = choice( range( 1, 9 ) )
+    token = 0
+
+    for i in range( 6 )[::-1]:
+        token += digit * (10 ** i)
+        digit = choice( range( digit, 10) )
+
+    return token
+
+def falling():
+    digit = choice( range( 1, 10 ) )
+    token = 0
+
+    for i in range( 6 )[::-1]:
+        token += digit * (10 ** i)
+        digit = choice( range( 0, digit + 1 ) )
+
+    return token
+
+token_types = [pal, mini, rising, falling, regular]
+"""
+with open('rsa_token_values.txt', 'w') as fout:
+    # cycle over the number of lines
+    
+    # choose the type of token (pal, mini, rising, falling)
+    token = makeToken( choice( token_types ) )
+    
+    # given the type of token, create digits for token
+    
+    # format token (add space, new line, etc)
+    concat( token[:3], " ", token[3:], "\n" )
+
+
+    # write token to the output file
+"""
+=======
 from math import ceil
 from gen_utilities import palindrome, rising_falling, generic, stitcher
 
@@ -57,3 +130,4 @@ with open('rsa_token_values_I.txt', 'w') as fout:
             token = stitcher(generic())
       
         fout.write(token)
+>>>>>>> 6405c90c2b6d6160f9492448734b4a6d2599c03c:sample_puzzles/30_rsa_token_pattern/gen_rsa_part_I.py
