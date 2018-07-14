@@ -34,6 +34,7 @@
 #     ignore the no category samples.
 
 from random import randint, choice 
+<<<<<<< HEAD:sample_puzzles/30_rsa_token_pattern/gen_rsa_token_pattern.py
 from math import floor, ceil
 NUM_LINES = 10
 
@@ -105,3 +106,28 @@ with open('rsa_token_values.txt', 'w') as fout:
 
     # write token to the output file
 """
+=======
+from math import ceil
+from gen_utilities import palindrome, rising_falling, generic, stitcher
+
+NUM_LINES = 1000
+
+with open('rsa_token_values_I.txt', 'w') as fout:
+    options = ('pal', 'mini', 'rising', 'falling', 'normal')
+      
+    for item in range(NUM_LINES):
+        category = choice(options)
+        if category == 'pal':
+            token = stitcher(palindrome())
+        elif category == 'mini':
+            token = palindrome(3) + palindrome(3)
+            token = stitcher(token)
+        elif category == 'rising':
+            token = stitcher(rising_falling())
+        elif category == 'falling':
+            token = stitcher(rising_falling(rising=False))
+        else:
+            token = stitcher(generic())
+      
+        fout.write(token)
+>>>>>>> 6405c90c2b6d6160f9492448734b4a6d2599c03c:sample_puzzles/30_rsa_token_pattern/gen_rsa_part_I.py
