@@ -19,7 +19,7 @@
 #     * 654 321     - falling numbers (each subsequent number is
 #                     equal to or smaller than the previous number)
 
-# Given the values in the file rsa_token_values.txt:
+# Given the values in the file rsa_token_values_I.txt:
 # Count how many times each pattern occurs and identify the smallest and 
 # largest counts (ignore count of items that don't match any category).
 # For example, given the following...
@@ -33,27 +33,17 @@
 # largest count is 2 (palindrome) and smallest count is 1 (rising), 
 #     ignore the no category samples.
 
-from random import randint, choice 
-from math import ceil
-from gen_utilities import palindrome, rising_falling, generic, stitcher
+from random import sample
+from gen_utilities import stitcher
 
 NUM_LINES = 1000
 
 with open('rsa_token_values_I.txt', 'w') as fout:
-    options = ('pal', 'mini', 'rising', 'falling', 'normal')
-      
-    for item in range(NUM_LINES):
-        category = choice(options)
-        if category == 'pal':
-            token = stitcher(palindrome())
-        elif category == 'mini':
-            token = palindrome(3) + palindrome(3)
-            token = stitcher(token)
-        elif category == 'rising':
-            token = stitcher(rising_falling())
-        elif category == 'falling':
-            token = stitcher(rising_falling(rising=False))
-        else:
-            token = stitcher(generic())
-      
-        fout.write(token)
+    numbers = []
+    for num in range(1000000):
+        numbers.append(list(str(num).rjust(6, '0')))
+
+    pre_tokens = sample(numbers, NUM_LINES)
+    
+    for token in pre_tokens:        
+        fout.write(stitcher(token, new_line=True))
