@@ -1,38 +1,46 @@
-# TODO
-# it is possible that 'normal' tokens might
-#     be accidentally created with one of the
-#     four patterns... and then we could
-#     end up with a pattern category and pattern 
-#     that are out of sync.
+# This problem is based on the same scenario as our previous problem
+# but the data is stored in a json file: rsa_token_values_II.json 
 
+# As before, there are five main categories associated with 
+#     patterns potentially found in the tokens:
 
-from random import randint, choice 
-from math import ceil
+#     * 123 321     - category 1: a palindrome if you consider all six numbers
+#     * 121 454     - category 2: two mini palindromes, one in each group of three
+#                     (they do not need to be identical)
+#     * 123 679     - category 3: rising numbers (each subsequent number is equal to 
+#                     or larger than the previous number)
+#     * 654 321     - category 4: falling numbers (each subsequent number is
+#                     equal to or smaller than the previous number)    
+#     * 235 156     - category 5: none of the above
+
+# The json file contains a sequence of records
+#     with four fields per record:
+#     * uid: user id
+#     * cat: category (1-5)
+#     * score: confidence score (0 (zero confidence) to 10 (high confidence))
+#     * token: the RSA token value
+# 
+#     * The data will look like this:
+#     [{uid: 0000, cat: 1, score: 4, token: '123 321'},
+#      {uid: 0001, cat: 2, score: 5, token: '121 434'}]
+
+# The objective is to read in the json and answer the following questions:
+#     * for each of the five token categories described above, how many
+#           were found?
+#     * in how many cases does the given token category match
+#           the actual token category?
+
+from random import randint, choice, sample 
 import json
-from gen_utilities import (palindrome, rising_falling, 
-                           generic, stitcher, create_user_id,
+from gen_utilities import (stitcher, create_user_id,
                            create_score)
 NUM_LINES = 1000
 
-# Part II
-# Let's take this puzzle to a higher level of difficulty.
-# The general principle is the same... we want to categorize and count the 
-#     five types of token patterns
-#     * However, this time we will read in data stored in a json file that
-#       includes additional metadata associated with each of the token values
-#     * The metadata will include a UserID (uid), Categorization (cat),
-#     *     Confidence_Score (score) and Token (token)
-#     * The data will look like this:
-#     [{uid: 0000, cat: 1, score: 4, token: '123 321'},
-#      {uid: 0001, cat: 2, score: 5, token: '121 434'},
-#      {},
-#      {}]
-#
-# Main goal is to read in the json AND count each of the patterns
-# 
-# Count how many times each pattern occurs and identify the smallest and 
-# largest counts (ignore count of items that don't match any category).
+numbers = []
+for num in range(1000000):
+    numbers.append(list(str(num).rjust(6, '0')))
 
+pre_tokens = sample(numbers, NUM_LINES)
 
 with open('rsa_token_values_II.json', 'w') as fout:
     options = {'pal': 1,
@@ -41,32 +49,18 @@ with open('rsa_token_values_II.json', 'w') as fout:
                'falling': 4,
                'normal': 5,
               }
-    
+
     output = []
-    for item in range(NUM_LINES):
-        uid = create_user_id()
-        
+    for token in pre_tokens:  
+        uid = create_user_id()    
         category_name, cat = choice(list(options.items()))
-        
-        if category_name == 'pal':
-            token = stitcher(palindrome(), new_line=False)    
-        elif category_name == 'mini':
-            token = palindrome(3) + palindrome(3)
-            token = stitcher(token, new_line=False)
-        elif category_name == 'rising':
-            token = stitcher(rising_falling(), new_line=False)
-        elif category_name == 'falling':
-            token = stitcher(rising_falling(rising=False), new_line=False)
-        elif category_name == 'normal':
-            token = stitcher(generic(), new_line=False)
-      
+        token = stitcher(token, new_line=False)
         score = create_score()
         record = {'uid': uid,
                   'cat': cat,
                   'score': score,
                   'token': token,
                  }
-
         output.append(record)
-
+        
     json.dump(output, fout)

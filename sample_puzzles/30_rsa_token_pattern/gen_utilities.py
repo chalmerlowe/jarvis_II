@@ -1,6 +1,7 @@
 from random import randint, choice 
 from math import ceil
 
+
 def palindrome(n=6):
     '''Return a random sequence of n numbers that are palindromic.
     '''
@@ -71,6 +72,7 @@ def create_user_id(lower=0, upper=99, digits=4):
     The length of the userid string is set using digits (default is 4).
     '''
     return str(randint(lower, upper)).rjust(digits, '0')
+
 
 def create_score():
     '''# TODO... define a method to create correlated scores
