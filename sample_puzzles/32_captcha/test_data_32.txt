@@ -1,0 +1,10 @@
+sum of 6 and 6
+4 * 4
+10 * 3
+8 + 5
+7 times 2
+0 plus 2
+1 + 1
+8 * 2
+difference between 7 and 4
+division of 7 by 4
