@@ -1,0 +1,12 @@
+5 python 
+10 statsmodels
+4 pandas
+4 numpy
+7 requests
+5 pipenv
+7 pendulum
+7 selenium
+9 matplotlib
+8 tensorflow
+12 beautifulsoup
+6 ipython

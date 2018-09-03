@@ -46,13 +46,13 @@ print('Answer:', word_count)
 # The following solution uses slightly more pythonic and/or potentially
 #     more elegant code.
 
-def vowel_counter(word):
+with open('words.txt') as fin:    
+    words = set(fin.readlines())
     vowels = 'aeiou'
-    return sum([1 for letter in word if letter in vowels])
-
-
-with open('words.txt') as fin:
-    words = set(word.rstrip() for word in fin.readlines())
-    word_count = sum([1 for word in words if vowel_counter(word) > 3])
-
+    
+    word_count = 0
+    for word in words:
+        if sum(1 for letter in word if letter in vowels) >= 4:    
+            word_count += 1
+    
 print('Answer2:', word_count)
