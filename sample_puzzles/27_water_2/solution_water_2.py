@@ -31,18 +31,42 @@
 # ==============================================================
 # Your code goes here:
 
-file = open('water_dupe.txt').read().split('\n')[:-1]
+# SOLUTION 0 ---------------------------------------------
+
+with open('water_dupe.txt') as fin:
+    water_use = dict()
+    for line in fin:
+        ID, amount = line.strip().split(';')
+        amount = int(amount)
+        if ID in water_use:
+            water_use[ID] += amount
+        else:
+            water_use[ID] = amount
+
+max_use = max(water_use.values())
+min_use = min(water_use.values())    
+            
+for key, value in water_use.items():
+    if value == max_use:
+        print("MAX:", key, value)
+    if value == min_use:
+        print("MIN:", key, value)
+        
+
+# SOLUTION 1 ---------------------------------------------
 
 from collections import defaultdict
 from operator import itemgetter
 
-water_use = defaultdict(int)
-for line in file:
-    ID, amount = line.split(';')
-    amount = int(amount)
-    water_use[ID] += amount
+with open('water_dupe.txt') as fin:
+    water_use = defaultdict(int)      # auto creates keys upon demand
+    for line in fin:
+        ID, amount = line.split(';')
+        amount = int(amount)
+        water_use[ID] += amount
 
-items = sorted(water_use.items(), key=itemgetter(1))
+    items = sorted(water_use.items(), key=itemgetter(1))
 
-print('highest:', items[-1], water_use[items[-1]])
-print('lowest:', items[0], water_use[items[0]])
+    print('lowest:', items[0])
+    print('highest:', items[-1])
+
