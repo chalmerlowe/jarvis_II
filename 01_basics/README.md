@@ -3,10 +3,10 @@
 
 # TABLE OF CONTENTS
 
-* [Introduction](intro.ipynb)
-* [Installing Tools](install.ipynb)
-* [Basics of Python](basics.ipynb)
+* [Introduction](01_intro.ipynb)
+* [Installing Tools](02_install.ipynb)
+* [Basics of Python](03_basics.ipynb)
 
 | Next |
 |:-----|
-|[Introduction](intro.ipynb)|
+|[Introduction](01_intro.ipynb)|
