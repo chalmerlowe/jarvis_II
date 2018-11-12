@@ -46,8 +46,11 @@ sorted_words = sorted(words, key=len)
 
 positions = [22615, 10582, 353, 1660, 43880]
 
+terms = []
 for index in positions:
-    print(sorted_words[index])
+    terms.append(sorted_words[index])
+
+print(' '.join(terms))
 
 # Expected answer: python rocks for data science
 
@@ -61,5 +64,9 @@ with open('1138090f.txt') as fin:
 
 positions = [22615, 10582, 353, 1660, 43880]
 
-for index in positions:
-    print(sorted_words[index])
+# similarly... the printing process can be handled with a second list
+#     comprehension. The values in the comprehension can be unpacked
+#     using the asterix. The similarly, the values can be printed on a
+#     single line using the sep=' ' argument. 
+
+print(*[sorted_words[index] for index in positions], sep=' ')
