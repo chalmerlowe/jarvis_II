@@ -1,5 +1,5 @@
 
-<img src='../images/dark_art_logo.600px.png' width='300' style="float:left">
+<img src='../universal_images/dark_art_logo.600px.png' width='300' style="float:left">
 
 # TABLE OF CONTENTS
 
