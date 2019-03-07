@@ -16,6 +16,21 @@
 # ==============================================================
 # Your code goes here:
 
+# Solution Zero:
+
+sums = []
+for exponent in [2, 3, 4, 5]:
+    interim_sums = []    
+    for num in range(0, 10001, exponent):
+        interim_sums.append(num ** exponent)
+    total = sum(interim_sums)
+    sums.append(total)
+
+answer = sum(sums)    
+print(answer)
+
+# Solution One:
+
 exponents = [2, 3, 4, 5]
 interim_sums = []
 upper_bound = 10000 + 1
@@ -26,4 +41,5 @@ def solver(upper_bound):
     return sum(interim_sums)
 
 print('The answer is:', solver(upper_bound))
+
 # 33388360001665649978667
