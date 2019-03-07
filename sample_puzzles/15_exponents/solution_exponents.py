@@ -42,4 +42,15 @@ def solver(upper_bound):
 
 print('The answer is:', solver(upper_bound))
 
+# Solution two:
+
+total = sum(
+            num ** exponent 
+                for num in range(1, 10001) 
+                    for exponent in range(2, 6)
+                        if num % exponent == 0
+            )
+
+print(total)
+
 # 33388360001665649978667
