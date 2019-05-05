@@ -41,3 +41,24 @@
 
 # ==============================================================
 # Your code goes here:
+
+# the strategy was to create a simple solution that read the entire
+# data set in one instruction and did not modify the read data.  this
+# would ensure a much different soln than Chalmer's
+
+def keyz(itm):
+    itm = itm.split(',')
+    return (itm[0], -float(itm[2]))
+
+
+with open('asc_desc.csv') as f:
+            data = f.readlines()
+
+data = sorted(data, key=keyz)
+dt = data[500-1].split(',')
+print("Answer:", int(dt[1]) + float(dt[2]))
+
+#Answer: 159.055
+
+
+
