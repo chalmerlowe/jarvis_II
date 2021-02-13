@@ -17,7 +17,7 @@
 # For example, given the following lines:
 #    j2o31i4;562
 #    ja02i3k;743
-#    yw83h2o;240      < duplicate: use only the first line
+#    yw83h2o;240      < duplicate: use only the fisrt line
 #    i2o3401;489
 #    yw83h2o;240      < duplicate: drop this record
 #    2u3hoas;108
@@ -30,3 +30,13 @@
 
 # ==============================================================
 # Your code goes here:
+waterUsage = {}
+with open('water.txt') as fin:
+    data = fin.read().replace('\n',',')[:-1].split(',')
+    for pair in data:
+        elements = pair.split(';')
+        if elements[0] not in waterUsage:
+            waterUsage[elements[0]] = elements[1]
+    top = sorted(waterUsage, key=waterUsage.__getitem__,reverse=True)[0:5]
+    for cust in top:
+        print( cust+' uses '+str(waterUsage[cust])+' gallons.')
